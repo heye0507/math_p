@@ -13018,43 +13018,28 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
+    @font-face {
+ font-family: "Fira Mono";
+ font-weight: normal;
+ font-style: normal;
+ src: local('"Fira Mono"'), url('fonts/fira.ttf') format('truetype');
+}
+
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            /*preferredFont: "TeX",*/
+            /*availableFonts: ["TeX", "STIX"],*/
+            styles: {
+                scale: 100,
+                ".MathJax_Display": {
+                    "font-size": "100%",
+                }
+            }
+        }
+    });
+</script>
     
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-
     </style>
 
 
@@ -13089,7 +13074,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13276,7 +13261,7 @@ Past Research has unveiled the core reason of such impressive classification per
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="4.----Visualization">4.    Visualization<a class="anchor-link" href="#4.----Visualization">&#182;</a></h1>
+<h1 id="Visualization">Visualization<a class="anchor-link" href="#Visualization">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -13666,7 +13651,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[130]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14018,6 +14003,370 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Neural-Collapse-Proof">Neural Collapse Proof<a class="anchor-link" href="#Neural-Collapse-Proof">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>According to the <strong><em>Prevalence of Neural Collapse during the terminal phase of deep learning training</em></strong> by Vardan P et al., when training phase entered the Terminal Phase of Training(TPT), the training error stays effectively zero while training loss stays nearly zero.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In TPT, the process <strong>Neural Collapse</strong> can be characterized by four manifestations in the classifier and last-layer activations, including Variability collapse(NC1), Convergence to Simplex ETF(NC2), Convergence to self-duality(NC3) and Simplification to Nearest Class-Center(NC4). In this section, we will prove (i) the contraction of within class variation closeness to equal-norms of class-means and (ii) equal-angularity closeness to maximal-angle equiangularity.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prev-settings">Prev settings<a class="anchor-link" href="#Prev-settings">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this work, we use the resnet18 as our pretrained models to extract features. The dataset we used is MNIST and we sub-sampled N=5000 examples per class for MNIST. To approach the TPT status, as mentioned in the previous sections, we fintuned the pretrained models until its training loss converges to 0.60%(the accuracy close to 99.40%).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Vardan P's original paper, they used the last linear classifer layer as the <strong>last-layer activations</strong> or <strong>last-layer features</strong>. Here, to explore further, we seperately extract resnet18 <strong>final conv layer features(512 dimensions)</strong>, <strong>first linear layer features in classifer head(1024 dimensions)</strong> and <strong>last linear layer features in classifer head(512 dimensions)</strong>. Then accordingly calculate related statistical properties as required.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Calculate-features'-statistical-properties">Calculate features' statistical properties<a class="anchor-link" href="#Calculate-features'-statistical-properties">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>During training, we pass the train datasets(label balanced) through the fine-tuned pretrained model and use Pytorch forward hooks to extract features we need. Then based on the collected features we calculate the following statistics.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The note $\Phi_{i,c}$ means the $i$th example's features in $c$th class, and $\Phi_{i,c} \in R^{p}$, $p$ is the dimensions of features.<br>
+First, we compute the train class means $$\mu_c \triangleq {\underset {i}{\operatorname {Ave}}} \{\Phi_{i,c}\}, \ c=1,...,C$$ for example, if we set the last linear layer features as the targets, the $\mu_c$'s shape is (10,512)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then we compute the global mean of features over all samples $$\mu_G \triangleq {\underset {i,c}{\operatorname {Ave}}} \{\Phi_{i,c} \}, \ i=1,...,5000; \ c=1,...,C$$ the shape of $\mu_G$ is (512,) if we choose the last linear layer features as targets</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For total covariance matrix, to remove bias, we subtracted global means from each sample's features: $\{\Phi_{i,c}-\mu_G\}$, then get the total covariance $\Sigma_T \in R^{p\times p}$: $$\Sigma_T \triangleq {\underset {i,c}{\operatorname {Ave}}} \{(\Phi_{i,c}-\mu_G)(\Phi_{i,c}-\mu_G)^T\}$$ the shape of $\Sigma_T$ is (512,512) if we choose the last linear layer features as targets</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Similarly, the between-class covariance, $\Sigma_B \in R^{p\times p}$: $$\Sigma_B \triangleq {\underset {c}{\operatorname {Ave}}} \{(\mu_{c}-\mu_G)(\mu_{c}-\mu_G)^T\}$$
+and the within-class covariance, $\Sigma_W \in R^{p\times p}$: $$\Sigma_W \triangleq {\underset {i,c}{\operatorname {Ave}}} \{(\Phi_{i,c}-\mu_c)(\Phi_{i,c}-\mu_c)^T\}$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Based on the statistics we calculated above, we try to verify two characteristics: (i) the <em>contraction of within class variation</em> closeness to <em>equal-norms of class-means</em> and (ii) <em>equal-angularity</em> closeness to <em>maximal-angle equiangularity</em>. Here, we defined the mathematical expressions of these four terms:</p>
+<ul>
+<li>Contraction of within class variation: $$Tr\{\Sigma_W \Sigma_B^{\dagger}\}/C$$</li>
+<li>Equal-norms of class-means: $$Std_c(||\mu_c-\mu_G||_2)/Avg_c(||\mu_c-\mu_G||_2)$$ </li>
+<li>Equal-angularity: $$Std_c(cos_u(c,c^{'})） = Std_c[&lt;\mu_c-\mu_G,\mu_{c^{'}}-\mu_G / (||\mu_c-\mu_G||_2||\mu_{c^{'}}-\mu_G||_2)]$$</li>
+<li>Maximal-angle equiangularity: $$Avg_{c,c^{'}}|cos_u(c,c^{'})+1/(C-1)|$$</li>
+</ul>
+<p>Calculation results based on different extracted features show as follows:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead><tr>
+<th style="text-align:left">Features</th>
+<th style="text-align:center">Contraction of within class variation</th>
+<th style="text-align:center">Equal-norms of class-means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Last Conv Layer Feats</td>
+<td style="text-align:center">0.1889</td>
+<td style="text-align:center">0.1503</td>
+</tr>
+<tr>
+<td style="text-align:left">First Linear Layer Feats</td>
+<td style="text-align:center">0.1834</td>
+<td style="text-align:center">0.1303</td>
+</tr>
+<tr>
+<td style="text-align:left">Last Linear Layer Feats</td>
+<td style="text-align:center">0.1110</td>
+<td style="text-align:center">0.0602</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead><tr>
+<th style="text-align:left">Features</th>
+<th style="text-align:left">Equal-angularity</th>
+<th style="text-align:left">Maximal-angle equiangularity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Last Conv Layer Feats</td>
+<td style="text-align:left">0.0230</td>
+<td style="text-align:left">0.1143</td>
+</tr>
+<tr>
+<td style="text-align:left">First Linear Layer Feats</td>
+<td style="text-align:left">0.0198</td>
+<td style="text-align:left">0.1136</td>
+</tr>
+<tr>
+<td style="text-align:left">Last Linear Layer Feats</td>
+<td style="text-align:left">0.0074</td>
+<td style="text-align:left">0.1115</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>According to the above results, the two closeness hypotheses are proved in a certain extent. Besides, we observed that compared with different layers' extracted features, the latter layers' features gains low within class variation, which means through deeper layer training, features belonging to each catergory gradually collapse onto their class-means. Similar phenomenan happened in the <em>Equal-angularity</em>, which implies that these class-means converge to the vertices of the Simplex ETF.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Extracted-Features">Extracted Features<a class="anchor-link" href="#Extracted-Features">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this subsection, we extract features with different traditional machine learning methods, such as Support Vector Machine (SVM), Random 
+Forest (RF) and Logistic Regression (LR) with and without Principal 
+Components Analysis (PCA) decomposing dataset. Comparing their experimental results, we find out the best method to fit the extracted features. Finally, we apply the fittest method to extract features from Final Conv layer and first linear layer.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prev-settings">Prev settings<a class="anchor-link" href="#Prev-settings">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this work, we use the no-finutuned resnet18 as our pre-trained model to extract features. The dataset MNIST contains more than 50000 samples and divided into 10 sub-groups. We also keep on reducing the dimension of extracted features of PCA from 256 to 64. Then verify the accuracy performance of PCA with SVM, RF and LR on painting classfications.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following tables separately show the classification accuray of LR, SVM and RF with and without PCA:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead><tr>
+<th>Feature Extraction Methods</th>
+<th>Classification Accuracy with LR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>without PCA</td>
+<td>94.0322%</td>
+</tr>
+<tr>
+<td>PCA with 256 dimensions</td>
+<td>92.7135%</td>
+</tr>
+<tr>
+<td>PCA with 128 dimensions</td>
+<td>92.3128%</td>
+</tr>
+<tr>
+<td>PCA with 64 dimensions</td>
+<td>92.5549%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead><tr>
+<th>Feature Extraction Methods</th>
+<th>Classification Accuracy with SVM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>without PCA</td>
+<td>93.8486%</td>
+</tr>
+<tr>
+<td>PCA with 256 dimensions</td>
+<td>93.3311%</td>
+</tr>
+<tr>
+<td>PCA with 128 dimensions</td>
+<td>93.0974%</td>
+</tr>
+<tr>
+<td>PCA with 64 dimensions</td>
+<td>92.9054%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead><tr>
+<th>Feature Extraction Methods</th>
+<th>Classification Accuray with RF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>without PCA</td>
+<td>88.4818%</td>
+</tr>
+<tr>
+<td>PCA with 256 dimensions</td>
+<td>87.4468%</td>
+</tr>
+<tr>
+<td>PCA with 128 dimensions</td>
+<td>87.9059%</td>
+</tr>
+<tr>
+<td>PCA with 64  dimensions</td>
+<td>87.7389%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>According to the above experiments, we find that PCA, as an unsupervised learning method, doesn't perform well in this project. However, some traditional supervised learning method, such as LR, SVM and RF, are powerful to classify the paintings, and Logistic Regression obtains the highest accuracy among these methods, which is fittest to extract features in this project. It is because that PCA would lose some information of paintings. Thus, to accelerate processing, we only use Logistic Regression to extract features. The following table shows the accuracy results of final conv layer and first linear layer:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead><tr>
+<th>Extracted Layer</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Final conv layer</td>
+<td>95.0004%</td>
+</tr>
+<tr>
+<td>First linear layer</td>
+<td>94.5747%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Cifar-10">Cifar 10<a class="anchor-link" href="#Cifar-10">&#182;</a></h1>
 </div>
 </div>
@@ -14043,7 +14392,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_73_0.png"
+<img src="Report_files/Report_101_0.png"
 >
 </div>
 
@@ -14075,7 +14424,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_75_0.png"
+<img src="Report_files/Report_103_0.png"
 >
 </div>
 
@@ -14187,7 +14536,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14226,7 +14575,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14249,7 +14598,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[27]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14275,7 +14624,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14318,7 +14667,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_103_0.png"
+<img src="Report_files/Report_131_0.png"
 >
 </div>
 
@@ -14336,7 +14685,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14359,13 +14708,13 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[8]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="Report_files/Report_105_0.png"
+<img src="Report_files/Report_133_0.png"
 >
 </div>
 
@@ -14383,7 +14732,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14422,7 +14771,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14610,7 +14959,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_111_0.png"
+<img src="Report_files/Report_139_0.png"
 >
 </div>
 
@@ -14643,7 +14992,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_113_0.png"
+<img src="Report_files/Report_141_0.png"
 >
 </div>
 
@@ -14754,7 +15103,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_119_0.png"
+<img src="Report_files/Report_147_0.png"
 >
 </div>
 
@@ -14775,7 +15124,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14827,7 +15176,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[27]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14937,7 +15286,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -14960,7 +15309,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[15]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15003,7 +15352,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[37]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15064,7 +15413,7 @@ Wall time: 5min 4s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[40]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15119,13 +15468,13 @@ Wall time: 2min 45s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[110]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="Report_files/Report_155_0.png"
+<img src="Report_files/Report_183_0.png"
 >
 </div>
 
@@ -15155,7 +15504,7 @@ Wall time: 2min 45s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[120]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15188,7 +15537,7 @@ Wall time: 2min 45s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[32]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15219,7 +15568,7 @@ Wall time: 2min 45s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[38]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15267,7 +15616,7 @@ Test: None</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[42]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15290,7 +15639,7 @@ Test: None</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[43]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15335,7 +15684,7 @@ Wall time: 6min 2s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[62]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15367,7 +15716,7 @@ Wall time: 6min 2s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[55]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15410,8 +15759,105 @@ Wall time: 36.8 s
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Calculate-Statistics">Calculate Statistics<a class="anchor-link" href="#Calculate-Statistics">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_properties</span><span class="p">(</span><span class="n">sfs_cat</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">,</span> <span class="n">num_sample_each</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">num_labels</span><span class="o">=</span><span class="mi">10</span><span class="p">,):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Params:</span>
+<span class="sd">        sfs_cat: concated features</span>
+<span class="sd">        groud_truth: y_labels</span>
+<span class="sd">        num_sample_each: Sub-sample Num for each class</span>
+<span class="sd">        num_labels: num of labels</span>
+<span class="sd">    Return:</span>
+<span class="sd">        mu_c: shape(num_labels, dim_features)</span>
+<span class="sd">        mu_G: shape(dim_features,)</span>
+<span class="sd">        sigma_T, sigma_B, sigma_W: shape(dim_features,dim_features)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">#obtain features&#39; dim</span>
+    <span class="n">num_features</span> <span class="o">=</span> <span class="n">sfs_cat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1">#equally sub-sample for each category</span>
+    <span class="n">fs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">sfs_cat</span><span class="p">,</span><span class="n">ground_truth</span><span class="p">[:,</span><span class="bp">None</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="s1">&#39;{i}&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_features</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>
 
+    <span class="n">mu_G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_features</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">mu_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_labels</span><span class="p">,</span><span class="n">num_features</span><span class="p">))</span>
+    <span class="n">sigma_T</span><span class="p">,</span> <span class="n">sigma_B</span><span class="p">,</span> <span class="n">sigma_W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_features</span><span class="p">,</span><span class="n">num_features</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_features</span><span class="p">,</span><span class="n">num_features</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_features</span><span class="p">,</span><span class="n">num_features</span><span class="p">))</span>
+
+    <span class="c1">#fs_groups: store each class&#39;s features, shape(num_labels, num_sample_each)</span>
+    <span class="n">fs_groups</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">fs_groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fs_df</span><span class="p">[</span><span class="n">fs_df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">num_sample_each</span><span class="o">+</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="c1">#get mu_c</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mu_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">mu_c</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">fs_groups</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1">#get mu_G</span>
+    <span class="n">mu_G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mu_c</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1">#get sigma_T</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mu_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">sigma_T</span> <span class="o">+=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">((</span><span class="n">fs_groups</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">mu_G</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">fs_groups</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">mu_G</span><span class="p">))</span><span class="o">/</span><span class="n">num_sample_each</span>
+    <span class="n">sigma_T</span> <span class="o">/=</span> <span class="n">mu_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1">#get sigma_B</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mu_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">sigma_B</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">mu_c</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">-</span><span class="n">mu_G</span><span class="p">)[:,</span><span class="bp">None</span><span class="p">],</span>
+            <span class="p">(</span><span class="n">mu_c</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">-</span><span class="n">mu_G</span><span class="p">)[:,</span><span class="bp">None</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">sigma_B</span> <span class="o">/=</span> <span class="n">mu_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1">#get sigma_W</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mu_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">sigma_W</span> <span class="o">+=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">((</span><span class="n">fs_groups</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">mu_c</span><span class="p">[</span><span class="n">i</span><span class="p">,:])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">fs_groups</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">mu_c</span><span class="p">[</span><span class="n">i</span><span class="p">,:]))</span><span class="o">/</span><span class="n">num_sample_each</span>
+    <span class="n">sigma_W</span> <span class="o">/=</span> <span class="n">mu_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">mu_c</span><span class="p">,</span> <span class="n">mu_G</span><span class="p">,</span> <span class="n">sigma_T</span><span class="p">,</span> <span class="n">sigma_B</span><span class="p">,</span> <span class="n">sigma_W</span>
+
+<span class="k">def</span> <span class="nf">get_Trace_sigmaWB_div_c</span><span class="p">(</span><span class="n">sigma_W</span><span class="p">,</span><span class="n">sigma_B</span><span class="p">,</span><span class="n">num_labels</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1">#get Trace{sigma_W*sigma_B.pseudo}/C</span>
+    <span class="n">Trace_sigmaWB_div_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
+            <span class="n">sigma_W</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">sigma_B</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">)</span><span class="o">/</span><span class="n">num_labels</span>
+    <span class="k">return</span> <span class="n">Trace_sigmaWB_div_c</span>
+
+<span class="k">def</span> <span class="nf">get_equal_norms_of_cls_means</span><span class="p">(</span><span class="n">mu_c</span><span class="p">,</span><span class="n">mu_G</span><span class="p">):</span>
+    <span class="c1">#get Std(|mu_c - mu_G|_2)</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mu_c</span><span class="o">-</span><span class="n">mu_G</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="c1">#get Avg(|mu_c-mu_G|_2)</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mu_c</span><span class="o">-</span><span class="n">mu_G</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">/</span><span class="n">avg</span>
+
+<span class="k">def</span> <span class="nf">NC2</span><span class="p">(</span><span class="n">mu_c</span><span class="p">,</span><span class="n">mu_G</span><span class="p">,</span><span class="n">num_labels</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">cos_pairs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_labels</span><span class="p">,</span><span class="n">num_labels</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">c_1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_labels</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c_2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_labels</span><span class="p">):</span>
+            <span class="n">inner_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+                <span class="n">mu_c</span><span class="p">[</span><span class="n">c_1</span><span class="p">]</span><span class="o">-</span><span class="n">mu_G</span><span class="p">,</span>
+                <span class="n">mu_c</span><span class="p">[</span><span class="n">c_2</span><span class="p">]</span><span class="o">-</span><span class="n">mu_G</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">cos</span> <span class="o">=</span> <span class="n">inner_product</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mu_c</span><span class="p">[</span><span class="n">c_1</span><span class="p">]</span><span class="o">-</span><span class="n">mu_G</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mu_c</span><span class="p">[</span><span class="n">c_2</span><span class="p">]</span><span class="o">-</span><span class="n">mu_G</span><span class="p">))</span>
+            <span class="n">cos_pairs</span><span class="p">[</span><span class="n">c_1</span><span class="p">][</span><span class="n">c_2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cos</span> 
+
+    <span class="n">maximal_angle_equilangularity</span> <span class="o">=</span> <span class="n">cos_pairs</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">num_labels</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;maximal_angle_equilangularity: {maximal_angle_equilangularity}&#39;</span><span class="p">)</span> 
+    <span class="n">equal_angularity</span> <span class="o">=</span> <span class="n">cos_pairs</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;equal_angularity: {equal_angularity}&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
 </div>
     </div>
   </div>
