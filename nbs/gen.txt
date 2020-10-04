@@ -1,1 +1,1 @@
-jupyter nbconvert /path/filename --to=html_toc --TemplateExporter.exclude_input=True
+jupyter nbconvert Work/GitHub/math_p/nbs/Report.ipynb --to=html_toc --TemplateExporter.exclude_input=True
