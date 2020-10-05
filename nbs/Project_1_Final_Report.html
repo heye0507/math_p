@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Report</title>
+<title>Project_1_Final_Report</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13106,8 +13106,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Convolutional Neural Network (CNN) has been dominating in image classification systems since 2012<strong>[1]</strong>, different network architectures, such as VGG<strong>[2]</strong>, ResNet<strong>[3]</strong> and EfficientNet<strong>[4]</strong> etc., have demonstrated its ability to surpass human level performance on visual recognition tasks<strong>[5]</strong>.<br>
-Past Research has unveiled the core reason of such impressive classification performance: CNN is able to extract features from its different layers to create rich embedding information for downstream tasks<strong>[6]</strong>. In this report, we will investigate the visualization of such embeddings in two different datasets, and evaluate these feature embeddings performance on both deep neural network and classic machine learning structures.</p>
+<p><strong>Team Member: Hao HE, He CAO, Yue GUO, Haoyi CHENG</strong></p>
 
 </div>
 </div>
@@ -13115,14 +13114,31 @@ Past Research has unveiled the core reason of such impressive classification per
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Report-Outline:">Report Outline:<a class="anchor-link" href="#Report-Outline:">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We first setup a baseline model by taking the mean average of pixels on MNIST dataset, this non-deep learning model provides a foundation block to evaluate machine learning models. We then use ResNet-18 (ImageNet pretrained) and Scattering Net to extract features from MNIST, and finetuning the ResNet-18 model with a customized classification head. We perform T-SNE on both cases, and are focused on analyzing the fine-tuned model feature representations. Finally, we showed that how ResNet-18 convolution layers are capturing a single input image features. In addition, performance of CNN and various regression models are compared.</p>
+<p>Convolutional Neural Network (CNN) has been dominating in image classification systems since 2012<strong>[1]</strong>. Past Research has unveiled the core reason of such impressive classification performance: CNN is able to extract features from its different layers to create rich embedding information for downstream tasks<strong>[6]</strong>.</p>
+<p>And with the help of the growing power of computing capacity and the accessibility of large labeled image datasets, pretrained models, such as VGG<strong>[2]</strong>, ResNet<strong>[3]</strong> and EfficientNet<strong>[4]</strong>, have demonstrated great performance on image classification task, and surpass human level performance on visual recognition tasks<strong>[5]</strong>. The pretrained vision models are already trained on large image datasets, and therefore have extracted the image knowledge on their parameters, making their application on new dataset much easier. Besides, by applying transfer learning (i.e., fine-tune the models on user specified datasets), the models can better adapt to the downstream applications and show imporved performance.</p>
+<p>In practice, due to the power on feature extraction on CNN, the training classification error can approximately reduce to zero on simple datasets (for example, MNIST). And it is observed that Neural Collapse phenomena occurs as the training continues after the training error reduced to zero. The Neural Collapse phenomena, including Variability collapse, Convergence to Simplex ETF, Convergence to self-duality and Simplification to Nearest Class-Center, reveal that the training can still improve the quantity of feature extraction even after the loss is not decreasing any more.</p>
+<p>In this project, we investigate the power of feature extraction by pretrained models and the Neural Collapse phenomena<strong>[7]</strong>, to better understand the power of deep learning. Specifically, we investigate the visualization of such embeddings in two different datasets, and evaluate these feature embeddings performance on both deep neural network and classic machine learning structures.</p>
+<p>We first setup a baseline model by taking the mean average of pixels on MNIST dataset, this non-deep learning model provides a foundation block to evaluate machine learning models. We then use ResNet-18 (ImageNet pretrained) and Scattering Net to extract features from MNIST, and finetuning the ResNet-18 model with a customized classification head. We perform T-SNE on both cases, and are focused on analyzing the fine-tuned model feature representations. Finally, we showed that how ResNet-18 convolution layers are capturing a single input image features. In addition, performance of CNN and various regression models are compared. To further our understanding, we also pushed both CNN and Scattering Net models on Cifar10 datasets, we explain that Scattering net is under performance on information rich inputs since its convolution filters are predefined. However, pretrained CNN model is more robust to such changes. We also published our code in the reference section and it is available in Github.</p>
+<p>To summarize, we make the following contributions:</p>
+<ul>
+<li>We extract the image features from ResNet-18, and Scattering Net, on two datasets MNIST and CIFAR.</li>
+<li>We fine-tune the ResNet-18 model on two datasets MNIST and CIFAR, and extract the features from the fine-tuned model.</li>
+<li>We visualize all the extracted features by t-SNE.</li>
+<li>We visualize what ResNet-18 convolution layers can capture in a single input image features.</li>
+<li>We analyze the Neural Collapse phenomena on the extracted features.</li>
+<li>We conduct image classification using baseline (non-learning) method, logistic regression, SVM, random forest and CNN on the extracted features, and the comparison between them are made.  </li>
+</ul>
+<p>And we have the following observations:</p>
+<ul>
+<li>Pretrained ResNet-18 and Scattering Net can extract fairly good features on MNIST.</li>
+<li>Fine-tuned ResNet-18 can extract very good features on MNIST.</li>
+<li>Pretrained ResNet-18 and Scattering Net can not extract meaningful features on CIFAR.</li>
+<li>Fine-tuned ResNet-18 can extract fairly good features on CIFAR.</li>
+<li>ResNet-18 convolution layers can only recognize good signals in the first few layers becuase of the input dimension, which may suggest overparameterization of the model.</li>
+<li>Neural Collapse phenomena are revealed in our experiments.</li>
+<li>Among all the classifiers we experimented with, CNN has the best performance.</li>
+</ul>
+<h2 id="Report-Outline">Report Outline<a class="anchor-link" href="#Report-Outline">&#182;</a></h2><p>In section2, we briefly introduce the models we used for feature extraction, and in section3, we extract the features by both pre-trained models and fine-tuned models, and visualize the output. Evaluation on Neural Collapse and experiment results on image classification are reported in section 4, and a more difficult dataset (namely, CIFAR-10) are explored in section 5. Finally, we conclude in section 6</p>
 
 </div>
 </div>
@@ -13130,15 +13146,7 @@ Past Research has unveiled the core reason of such impressive classification per
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To further our understanding, we also pushed both CNN and Scattering Net models on Cifar10 datasets, we explain that Scattering net is under performance on information rich inputs since its convolution filters are predefined. However, pretrained CNN model is more robust to such changes. We also published our code in the reference section and it is available in Github.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Feature-Extraction:">Feature Extraction:<a class="anchor-link" href="#Feature-Extraction:">&#182;</a></h1>
+<h1 id="Feature-Extraction-Model">Feature Extraction Model<a class="anchor-link" href="#Feature-Extraction-Model">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -13170,7 +13178,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_8_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_6_0.png"
 >
 </div>
 
@@ -13184,7 +13192,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>       Figure 1: Mean of Training Set</code></pre>
+<pre><code>                                          Figure 1: Mean of Training Set</code></pre>
 
 </div>
 </div>
@@ -13284,7 +13292,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_21_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_19_0.png"
 >
 </div>
 
@@ -13298,7 +13306,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 2: 10K datapoints with its 512 features</code></pre>
+<pre><code>                            Figure 2: 10K datapoints with its 512 features</code></pre>
 
 </div>
 </div>
@@ -13323,7 +13331,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_24_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_22_0.png"
 >
 </div>
 
@@ -13337,7 +13345,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 3: 10K datapoints with its 512 features</code></pre>
+<pre><code>                            Figure 3: 10K datapoints with its 512 features</code></pre>
 
 </div>
 </div>
@@ -13355,7 +13363,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_26_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_24_0.png"
 >
 </div>
 
@@ -13369,7 +13377,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 3.1: Thumbnail mapped to its T-SNE presentation</code></pre>
+<pre><code>                            Figure 3.1: Thumbnail mapped to its T-SNE presentation</code></pre>
 
 </div>
 </div>
@@ -13402,7 +13410,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_30_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_28_0.png"
 >
 </div>
 
@@ -13416,7 +13424,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 4: 10K datapoints with its 1024 features</code></pre>
+<pre><code>                            Figure 4: 10K datapoints with its 1024 features</code></pre>
 
 </div>
 </div>
@@ -13434,7 +13442,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_32_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_30_0.png"
 >
 </div>
 
@@ -13448,7 +13456,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 4.1: Thumbnail mapped to its T-SNE presentation</code></pre>
+<pre><code>                            Figure 4.1: Thumbnail mapped to its T-SNE presentation</code></pre>
 
 </div>
 </div>
@@ -13473,7 +13481,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_35_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_33_0.png"
 >
 </div>
 
@@ -13487,7 +13495,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 5: 10K datapoints with its 1024 features</code></pre>
+<pre><code>                            Figure 5: 10K datapoints with its 1024 features</code></pre>
 
 </div>
 </div>
@@ -13505,7 +13513,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_37_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_35_0.png"
 >
 </div>
 
@@ -13519,7 +13527,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 5.1: Thumbnail mapped to its T-SNE presentation</code></pre>
+<pre><code>                            Figure 5.1: Thumbnail mapped to its T-SNE presentation</code></pre>
 
 </div>
 </div>
@@ -13544,7 +13552,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_40_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_38_0.png"
 >
 </div>
 
@@ -13558,7 +13566,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 6: 10K datapoints with its 10 features</code></pre>
+<pre><code>                            Figure 6: 10K datapoints with its 10 features</code></pre>
 
 </div>
 </div>
@@ -13576,7 +13584,7 @@ Past Research has unveiled the core reason of such impressive classification per
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_42_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_40_0.png"
 >
 </div>
 
@@ -13590,7 +13598,7 @@ Past Research has unveiled the core reason of such impressive classification per
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 6.1: Thumbnail mapped to its T-SNE presentation</code></pre>
+<pre><code>                            Figure 6.1: Thumbnail mapped to its T-SNE presentation</code></pre>
 
 </div>
 </div>
@@ -13651,6 +13659,9 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
 <div class="output_wrapper">
 <div class="output">
 
@@ -13662,7 +13673,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_48_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_47_0.png"
 >
 </div>
 
@@ -13676,7 +13687,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 7: 1st convolution layer 64 filters</code></pre>
+<pre><code>                            Figure 7: 1st convolution layer 64 filters</code></pre>
 
 </div>
 </div>
@@ -13694,7 +13705,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_50_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_49_0.png"
 >
 </div>
 
@@ -13708,7 +13719,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 8: 2nd convolution layer 64 filters</code></pre>
+<pre><code>                            Figure 8: 2nd convolution layer 64 filters</code></pre>
 
 </div>
 </div>
@@ -13726,7 +13737,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_52_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_51_0.png"
 >
 </div>
 
@@ -13740,7 +13751,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 9: 3rd convolution layer 64 filters</code></pre>
+<pre><code>                            Figure 9: 3rd convolution layer 64 filters</code></pre>
 
 </div>
 </div>
@@ -13758,7 +13769,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_54_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_53_0.png"
 >
 </div>
 
@@ -13772,7 +13783,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 10: 4th convolution layer 64 filters</code></pre>
+<pre><code>                            Figure 10: 4th convolution layer 64 filters</code></pre>
 
 </div>
 </div>
@@ -13790,7 +13801,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_56_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_55_0.png"
 >
 </div>
 
@@ -13804,7 +13815,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 11: 5th convolution layer 64 filters</code></pre>
+<pre><code>                            Figure 11: 5th convolution layer 64 filters</code></pre>
 
 </div>
 </div>
@@ -13822,7 +13833,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_58_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_57_0.png"
 >
 </div>
 
@@ -13836,7 +13847,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 12: 6th convolution layer with first 64 filters</code></pre>
+<pre><code>                            Figure 12: 6th convolution layer with first 64 filters</code></pre>
 
 </div>
 </div>
@@ -13854,7 +13865,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_60_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_59_0.png"
 >
 </div>
 
@@ -13868,7 +13879,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 13: 7th convolution layer with first 64 filters</code></pre>
+<pre><code>                            Figure 13: 7th convolution layer with first 64 filters</code></pre>
 
 </div>
 </div>
@@ -13886,7 +13897,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_62_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_61_0.png"
 >
 </div>
 
@@ -13900,7 +13911,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 14: 8th convolution layer with first 64 filters</code></pre>
+<pre><code>                            Figure 14: 8th convolution layer with first 64 filters</code></pre>
 
 </div>
 </div>
@@ -13928,13 +13939,12 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    <div class="prompt"> </div>
 
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_66_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_65_0.png"
 >
 </div>
 
@@ -13948,7 +13958,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 15: 10K datapoints with its 3096 features</code></pre>
+<pre><code>                            Figure 15: 10K datapoints with its 3096 features</code></pre>
 
 </div>
 </div>
@@ -13986,7 +13996,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>According to the <strong><em>Prevalence of Neural Collapse during the terminal phase of deep learning training</em></strong> by Vardan P et al., when training phase entered the Terminal Phase of Training(TPT), the training error stays effectively zero while training loss stays nearly zero.</p>
+<p>According to the <strong><em>Prevalence of Neural Collapse during the terminal phase of deep learning training</em></strong> by Vardan P et al.<strong>[7]</strong>, when training phase entered the Terminal Phase of Training(TPT), the training error stays effectively zero while training loss stays nearly zero.</p>
 
 </div>
 </div>
@@ -14002,7 +14012,7 @@ Figure 7 shows the 1st convolution layer 64 filters</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Prev-settings">Prev settings<a class="anchor-link" href="#Prev-settings">&#182;</a></h3>
+<h3 id="Previous-settings">Previous settings<a class="anchor-link" href="#Previous-settings">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14168,16 +14178,14 @@ and the within-class covariance, $\Sigma_W \in R^{p\times p}$: $$\Sigma_W \trian
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Extracted-Features">Extracted Features<a class="anchor-link" href="#Extracted-Features">&#182;</a></h2>
+<h2 id="Extracted-Features-on-tranditional-machine-learning-methods">Extracted Features on tranditional machine learning methods<a class="anchor-link" href="#Extracted-Features-on-tranditional-machine-learning-methods">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this subsection, we extract features with different traditional machine learning methods, such as Support Vector Machine (SVM), Random 
-Forest (RF) and Logistic Regression (LR) with and without Principal 
-Components Analysis (PCA) decomposing dataset. Comparing their experimental results, we find out the best method to fit the extracted features. Finally, we apply the fittest method to extract features from Final Conv layer and first linear layer.</p>
+<p>In this section, we train the model with different traditional machine learning methods, such as Support Vector Machine (SVM), Random Forest (RF) and Logistic Regression (LR), to classifify images by using extracted features from non-finutuned resnet18. Then, also adopt Principal Component Analysis (PCA) to reduce the dimension of extracted features from resnet18, and apply SVM, LR and RF to train the classification model again. Comparing their experimental results, we find the best method to fit the extracted features. Finally, we apply the this method to classify the images with extracted features from Final Conv layer, first linear layer and last linear layer of resnet18.</p>
 
 </div>
 </div>
@@ -14185,14 +14193,14 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Prev-settings">Prev settings<a class="anchor-link" href="#Prev-settings">&#182;</a></h3>
+<h3 id="Previous-settings">Previous settings<a class="anchor-link" href="#Previous-settings">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this work, we use the no-finutuned resnet18 as our pre-trained model to extract features. The dataset MNIST contains more than 50000 samples and divided into 10 sub-groups. We also keep on reducing the dimension of extracted features of PCA from 256 to 64. Then verify the accuracy performance of PCA with SVM, RF and LR on painting classfications.</p>
+<p>In this work, we use the non-finutuned resnet18 to extract features. The dataset MNIST contains more than 50000 samples and divided into 10 sub-groups. We also keep on reducing the dimension of extracted features of PCA from 256 to 64. Then verify the accuracy performance of SVM, RF and LR with and without PCA on image classfications.</p>
 
 </div>
 </div>
@@ -14311,31 +14319,38 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>According to the above experiments, we find that PCA, as an unsupervised learning method, doesn't perform well in this project. However, some traditional supervised learning method, such as LR, SVM and RF, are powerful to classify the paintings, and Logistic Regression obtains the highest accuracy among these methods, which is fittest to extract features in this project. It is because that PCA would lose some information of paintings. Thus, to accelerate processing, we only use Logistic Regression to extract features. The following table shows the accuracy results of final conv layer and first linear layer:</p>
+<p>We also give the following figure to represent the accuracy of different classification methods, and it clearly reflect the accuracy relationship among these methods.</p>
 
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"> </div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_97_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead><tr>
-<th>Extracted Layer</th>
-<th>Accuracy</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Final conv layer</td>
-<td>95.0004%</td>
-</tr>
-<tr>
-<td>First linear layer</td>
-<td>94.5747%</td>
-</tr>
-</tbody>
-</table>
+<p>According to the above experiments, we find that PCA, though dimension reduction to further reduce computational cost, doesn't perform well in this classification problem. For traditional machine learning methods, LR and SVM has similar accuracy on features extracted from final convolution layer of resnet18; RF are trailing 5% in classification accuracy. However, CNN has the best performance among all methods.</p>
 
 </div>
 </div>
@@ -14350,7 +14365,14 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since MNIST is single channel and doesn’t contain rich information, we therefore rerun the test on Cifar10 dataset. The final convolution layer features and activation maps are plotted. We noticed a degradation of performance of scattering net, where CNN are still robust and able to capture more features.</p>
+<h2 id="Features-from-pretrained-ResNet-18">Features from pretrained ResNet-18<a class="anchor-link" href="#Features-from-pretrained-ResNet-18">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since MNIST is single channel and doesn’t contain rich information, we therefore rerun the test on Cifar10 dataset. The final convolution layer features and activation maps are plotted. We noticed a degradation of performance of scattering net and pretrained CNN.</p>
 
 </div>
 </div>
@@ -14368,7 +14390,7 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_101_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_102_0.png"
 >
 </div>
 
@@ -14382,7 +14404,7 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>            Figure 16: Scattering net, 3200 datapoints with its 3096 features</code></pre>
+<pre><code>                            Figure 16: Scattering net, 3200 datapoints with its 3096 features</code></pre>
 
 </div>
 </div>
@@ -14400,7 +14422,7 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_103_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_104_0.png"
 >
 </div>
 
@@ -14414,7 +14436,7 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>             Figure 17: ResNet-18, 3200 datapoints with its 512 features</code></pre>
+<pre><code>                            Figure 17: ResNet-18, 3200 datapoints with its 512 features</code></pre>
 
 </div>
 </div>
@@ -14422,13 +14444,182 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Both Scattering Net and Pretrained ResNet-18 is unable to seperate the data at this stage since CIFAR-10 dataset contains more information than MNIST dataset</p>
+<p>Both Scattering Net and Pretrained ResNet-18 is unable to seperate the data at this stage since CIFAR-10 dataset contains more information than MNIST dataset.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Features-from-fine-tuned-ResNet-18">Features from fine-tuned ResNet-18<a class="anchor-link" href="#Features-from-fine-tuned-ResNet-18">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following three figures are the visualization of features extracted from ResNet-18 after fine-tuning on CIFAR-10, from the last convolution layer, first linear layer and second linear layer, respectively. We can identify different clusters from the visualization result, although the margins among them are not clear, and there are spaces that contains the mixture of different classes. But we can still infer the improvement comparing to the features without fine-tuned.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"> </div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_109_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>            Figure 18: t-SNE visualization of final convolution activations from ResNet-18 fine-tuned on CIFAR</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"> </div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_111_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>            Figure 19: t-SNE visualization of first linear layer from ResNet-18 fine-tuned on CIFAR</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"> </div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_113_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>            Figure 20: t-SNE visualization of second linear layer from ResNet-18 fine-tuned on CIFAR</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Activation-Map-for-single-input">Activation Map for single input<a class="anchor-link" href="#Activation-Map-for-single-input">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Following the same method for MNIST, we plot in figure 21 what CNN layers in ResNet18 have extracted from a dog's image in CIFAR . Comparing to the MNIST result, ResNet18 can extract more high-level information from CIFAR's images. And with the network going deeper, the network gradually distills the most useful information. This visualization helps us better understand what information is extracted by the CNN.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.image.AxesImage at 0x7f66d086d400&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_117_1.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>  Figure 21: (from left to right, from top to down)features extracted by 1st~8th convolution layer of ResNet18</code></pre>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14437,17 +14628,14 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In machine learning, the quality of feature engineering is one of the most important factors that affects the performance of machine learning algorithms. And one of the reasons that deep neural networks can success in computer vision is that these architectures can extract good features from the images, and is a powerful method for representation learning.</p>
+<p>We verified this argument through our extensive experiments on fature extraction, visualiztion, neural collapse and classfication evaluation. Our experiments demonstrate that ResNet18 and Scattering Net can extract good features on MNIST, by showing that different clusters are well separated. On our classification experiment, the best traditional classifier (logistic regression) can achieve 94.03% accuracy on the 10-class classification, indicating the ResNet18 is a fairly good feature extractor.</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14482,20 +14670,53 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h1>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Code-Reference">Code Reference<a class="anchor-link" href="#Code-Reference">&#182;</a></h1>
+<p>Project breakdown, we consider all team members are evenly contributed to this project. However, when we are drafting the final report, here is the section breakdown:</p>
+<ol>
+<li>Hao HE, MNIST section feature visualization &amp; Finetuning Resnet18</li>
+<li>He CAO, Evaluation on NC proof</li>
+<li>Yue GUO, Cifar 10 feature visualization &amp; Finetuning Resnet18</li>
+<li>Haoyi CHENG, Evaluating MNIST features on tranditional machine learning models</li>
+</ol>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[160]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+ <style>
+.output_png {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+</style> 
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -14512,7 +14733,7 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -14643,7 +14864,7 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_131_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_139_0.png"
 >
 </div>
 
@@ -14690,7 +14911,7 @@ Components Analysis (PCA) decomposing dataset. Comparing their experimental resu
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="Report_files/Report_133_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_141_0.png"
 >
 </div>
 
@@ -14935,7 +15156,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_139_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_147_0.png"
 >
 </div>
 
@@ -14968,7 +15189,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_141_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_149_0.png"
 >
 </div>
 
@@ -15079,7 +15300,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="Report_files/Report_147_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_155_0.png"
 >
 </div>
 
@@ -15100,7 +15321,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -15118,7 +15339,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Getting-embeddings">Getting embeddings<a class="anchor-link" href="#Getting-embeddings">&#182;</a></h1>
+<h2 id="Getting-embeddings">Getting embeddings<a class="anchor-link" href="#Getting-embeddings">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15134,7 +15355,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Result-from-prediction">Result from prediction<a class="anchor-link" href="#Result-from-prediction">&#182;</a></h1>
+<h2 id="Result-from-prediction">Result from prediction<a class="anchor-link" href="#Result-from-prediction">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15231,7 +15452,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Taking-activation-in-the-middle-layers">Taking activation in the middle layers<a class="anchor-link" href="#Taking-activation-in-the-middle-layers">&#182;</a></h1>
+<h2 id="Taking-activation-in-the-middle-layers">Taking activation in the middle layers<a class="anchor-link" href="#Taking-activation-in-the-middle-layers">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15247,7 +15468,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Final-convolution-activations-from-Res-18">Final convolution activations from Res-18<a class="anchor-link" href="#Final-convolution-activations-from-Res-18">&#182;</a></h1>
+<h2 id="Final-convolution-activations-from-Res-18">Final convolution activations from Res-18<a class="anchor-link" href="#Final-convolution-activations-from-Res-18">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15312,7 +15533,7 @@ Path: /home/jupyter/hkust/math/data/mnist_png</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="First-linear-layers-in-head">First linear layers in head<a class="anchor-link" href="#First-linear-layers-in-head">&#182;</a></h1><p>should I pull before drop out? currently pulling drop out activations</p>
+<h2 id="First-linear-layers-in-head">First linear layers in head<a class="anchor-link" href="#First-linear-layers-in-head">&#182;</a></h2><p>should I pull before drop out? currently pulling drop out activations</p>
 
 </div>
 </div>
@@ -15377,7 +15598,7 @@ Wall time: 5min 4s
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2nd-Linear-layer">2nd Linear layer<a class="anchor-link" href="#2nd-Linear-layer">&#182;</a></h1>
+<h2 id="2nd-Linear-layer">2nd Linear layer<a class="anchor-link" href="#2nd-Linear-layer">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15432,7 +15653,7 @@ Wall time: 2min 45s
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Activations-in-each-conv">Activations in each conv<a class="anchor-link" href="#Activations-in-each-conv">&#182;</a></h1>
+<h2 id="Activations-in-each-conv">Activations in each conv<a class="anchor-link" href="#Activations-in-each-conv">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15444,13 +15665,13 @@ Wall time: 2min 45s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="Report_files/Report_183_0.png"
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_191_0.png"
 >
 </div>
 
@@ -15501,7 +15722,7 @@ Wall time: 2min 45s
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Cifar-10">Cifar 10<a class="anchor-link" href="#Cifar-10">&#182;</a></h1>
+<h2 id="Cifar-10">Cifar 10<a class="anchor-link" href="#Cifar-10">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15522,6 +15743,911 @@ Wall time: 2min 45s
 <pre>[PosixPath(&#39;/home/jupyter/hkust/math/data/cifar10/labels.txt&#39;),
  PosixPath(&#39;/home/jupyter/hkust/math/data/cifar10/test&#39;),
  PosixPath(&#39;/home/jupyter/hkust/math/data/cifar10/train&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Learner(data=ImageDataBunch;
+
+Train: LabelList (50000 items)
+x: ImageList
+Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32)
+y: CategoryList
+bird,bird,bird,bird,bird
+Path: ../../data/cifar10;
+
+Valid: LabelList (10000 items)
+x: ImageList
+Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32)
+y: CategoryList
+bird,bird,bird,bird,bird
+Path: ../../data/cifar10;
+
+Test: None, model=Sequential(
+  (0): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (6): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (7): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (1): Sequential(
+    (0): AdaptiveConcatPool2d(
+      (ap): AdaptiveAvgPool2d(output_size=1)
+      (mp): AdaptiveMaxPool2d(output_size=1)
+    )
+    (1): Flatten()
+    (2): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Dropout(p=0.25, inplace=False)
+    (4): Linear(in_features=1024, out_features=512, bias=True)
+    (5): ReLU(inplace=True)
+    (6): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): Dropout(p=0.5, inplace=False)
+    (8): Linear(in_features=512, out_features=10, bias=True)
+  )
+), opt_func=functools.partial(&lt;class &#39;torch.optim.adam.Adam&#39;&gt;, betas=(0.9, 0.99)), loss_func=FlattenedLoss of CrossEntropyLoss(), metrics=[&lt;function error_rate at 0x7ff23503a158&gt;], true_wd=True, bn_wd=True, wd=0.01, train_bn=True, path=PosixPath(&#39;../../data/cifar10&#39;), model_dir=&#39;models&#39;, callback_fns=[functools.partial(&lt;class &#39;fastai.basic_train.Recorder&#39;&gt;, add_time=True, silent=False)], callbacks=[MixedPrecision
+learn: Learner(data=ImageDataBunch;
+
+Train: LabelList (50000 items)
+x: ImageList
+Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32)
+y: CategoryList
+bird,bird,bird,bird,bird
+Path: ../../data/cifar10;
+
+Valid: LabelList (10000 items)
+x: ImageList
+Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32),Image (3, 32, 32)
+y: CategoryList
+bird,bird,bird,bird,bird
+Path: ../../data/cifar10;
+
+Test: None, model=Sequential(
+  (0): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (6): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (7): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (1): Sequential(
+    (0): AdaptiveConcatPool2d(
+      (ap): AdaptiveAvgPool2d(output_size=1)
+      (mp): AdaptiveMaxPool2d(output_size=1)
+    )
+    (1): Flatten()
+    (2): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Dropout(p=0.25, inplace=False)
+    (4): Linear(in_features=1024, out_features=512, bias=True)
+    (5): ReLU(inplace=True)
+    (6): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): Dropout(p=0.5, inplace=False)
+    (8): Linear(in_features=512, out_features=10, bias=True)
+  )
+), opt_func=functools.partial(&lt;class &#39;torch.optim.adam.Adam&#39;&gt;, betas=(0.9, 0.99)), loss_func=FlattenedLoss of CrossEntropyLoss(), metrics=[&lt;function error_rate at 0x7ff23503a158&gt;], true_wd=True, bn_wd=True, wd=0.01, train_bn=True, path=PosixPath(&#39;../../data/cifar10&#39;), model_dir=&#39;models&#39;, callback_fns=[functools.partial(&lt;class &#39;fastai.basic_train.Recorder&#39;&gt;, add_time=True, silent=False)], callbacks=[...], layer_groups=[Sequential(
+  (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+  (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (2): ReLU(inplace=True)
+  (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (4): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (6): ReLU(inplace=True)
+  (7): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (8): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (9): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (11): ReLU(inplace=True)
+  (12): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (13): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (14): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (15): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (16): ReLU(inplace=True)
+  (17): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (18): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (19): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (20): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (21): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (22): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (23): ReLU(inplace=True)
+  (24): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (25): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+), Sequential(
+  (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (2): ReLU(inplace=True)
+  (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (5): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (7): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (9): ReLU(inplace=True)
+  (10): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (11): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (12): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (13): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (14): ReLU(inplace=True)
+  (15): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (16): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (17): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (18): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (19): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (20): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (21): ReLU(inplace=True)
+  (22): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (23): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+), Sequential(
+  (0): AdaptiveAvgPool2d(output_size=1)
+  (1): AdaptiveMaxPool2d(output_size=1)
+  (2): Flatten()
+  (3): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (4): Dropout(p=0.25, inplace=False)
+  (5): Linear(in_features=1024, out_features=512, bias=True)
+  (6): ReLU(inplace=True)
+  (7): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (8): Dropout(p=0.5, inplace=False)
+  (9): Linear(in_features=512, out_features=10, bias=True)
+)], add_time=True, silent=False)
+loss_scale: 65536
+max_noskip: 1000
+dynamic: True
+clip: None
+flat_master: False
+max_scale: 16777216
+loss_fp32: True], layer_groups=[Sequential(
+  (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+  (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (2): ReLU(inplace=True)
+  (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (4): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (6): ReLU(inplace=True)
+  (7): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (8): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (9): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (11): ReLU(inplace=True)
+  (12): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (13): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (14): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (15): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (16): ReLU(inplace=True)
+  (17): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (18): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (19): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (20): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (21): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (22): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (23): ReLU(inplace=True)
+  (24): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (25): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+), Sequential(
+  (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (2): ReLU(inplace=True)
+  (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (5): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (7): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (9): ReLU(inplace=True)
+  (10): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (11): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (12): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (13): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (14): ReLU(inplace=True)
+  (15): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (16): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (17): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (18): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (19): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (20): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (21): ReLU(inplace=True)
+  (22): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (23): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+), Sequential(
+  (0): AdaptiveAvgPool2d(output_size=1)
+  (1): AdaptiveMaxPool2d(output_size=1)
+  (2): Flatten()
+  (3): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (4): Dropout(p=0.25, inplace=False)
+  (5): Linear(in_features=1024, out_features=512, bias=True)
+  (6): ReLU(inplace=True)
+  (7): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (8): Dropout(p=0.5, inplace=False)
+  (9): Linear(in_features=512, out_features=10, bias=True)
+)], add_time=True, silent=False)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>torch.Size([10000, 10])
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>labels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>104.032150</td>
+      <td>4.516589</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18.399050</td>
+      <td>34.562187</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>106.047661</td>
+      <td>12.024546</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-67.828568</td>
+      <td>-44.965397</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17.282068</td>
+      <td>74.616455</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_203_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Final-convolution-activations-from-Res-18-on-CIFAR">Final convolution activations from Res-18 on CIFAR<a class="anchor-link" href="#Final-convolution-activations-from-Res-18-on-CIFAR">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_206_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="First-linear-layers-in-head-from-Res-18-on-CIFAR">First linear layers in head from Res-18 on CIFAR<a class="anchor-link" href="#First-linear-layers-in-head-from-Res-18-on-CIFAR">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_210_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2nd-Linear-layer-from-Res-18-on-CIFAR">2nd Linear layer from Res-18 on CIFAR<a class="anchor-link" href="#2nd-Linear-layer-from-Res-18-on-CIFAR">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_213_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Activations-in-each-conv">Activations in each conv<a class="anchor-link" href="#Activations-in-each-conv">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[32]:</div>
+
+
+
+
+<div class="output_png output_subarea output_execute_result">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_217_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[37]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[torch.Size([1, 64, 16, 16]),
+ torch.Size([1, 64, 16, 16]),
+ torch.Size([1, 64, 16, 16]),
+ torch.Size([1, 64, 8, 8]),
+ torch.Size([1, 64, 8, 8]),
+ torch.Size([1, 128, 4, 4]),
+ torch.Size([1, 256, 2, 2]),
+ torch.Size([1, 512, 1, 1])]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_220_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_221_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_222_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_223_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_224_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_225_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_226_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="Project_1_Final_Report_files/Project_1_Final_Report_227_0.png"
+>
 </div>
 
 </div>
@@ -15738,7 +16864,7 @@ Wall time: 36.8 s
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Calculate-Statistics">Calculate Statistics<a class="anchor-link" href="#Calculate-Statistics">&#182;</a></h1>
+<h2 id="Calculate-Statistics">Calculate Statistics<a class="anchor-link" href="#Calculate-Statistics">&#182;</a></h2>
 </div>
 </div>
 </div>
